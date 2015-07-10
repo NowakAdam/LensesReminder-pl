@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Lenses" representedClassName="Lenses" syncable="YES">
+        <attribute name="bliz_cylinder" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bliz_os" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bliz_pryzma" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bliz_sfera" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dal_cylinder" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dal_os" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dal_pryzma" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dal_sfera" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Lenses" positionX="-63" positionY="-18" width="128" height="165"/>
+    </elements>
 </model>

@@ -10,10 +10,13 @@
 		661082BA1B4EB66B004FD50C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661082B91B4EB66B004FD50C /* AppDelegate.swift */; };
 		661082BD1B4EB66B004FD50C /* LensesReminder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 661082BB1B4EB66B004FD50C /* LensesReminder.xcdatamodeld */; };
 		661082BF1B4EB66B004FD50C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661082BE1B4EB66B004FD50C /* ViewController.swift */; };
-		661082C21B4EB66B004FD50C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 661082C01B4EB66B004FD50C /* Main.storyboard */; };
 		661082C41B4EB66B004FD50C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 661082C31B4EB66B004FD50C /* Images.xcassets */; };
 		661082C71B4EB66B004FD50C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 661082C51B4EB66B004FD50C /* LaunchScreen.xib */; };
 		661082D31B4EB66B004FD50C /* LensesReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661082D21B4EB66B004FD50C /* LensesReminderTests.swift */; };
+		661082DD1B4FA687004FD50C /* SetupRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661082DC1B4FA687004FD50C /* SetupRecipeView.swift */; };
+		661082E51B4FAE9D004FD50C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 661082E41B4FAE9D004FD50C /* Main.storyboard */; };
+		66FE5FEF1B4FC615002F191F /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 66FE5FEE1B4FC615002F191F /* save.png */; };
+		66FE5FF11B4FCF16002F191F /* Lenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FE5FF01B4FCF16002F191F /* Lenses.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,12 +35,15 @@
 		661082B91B4EB66B004FD50C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		661082BC1B4EB66B004FD50C /* LensesReminder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LensesReminder.xcdatamodel; sourceTree = "<group>"; };
 		661082BE1B4EB66B004FD50C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		661082C11B4EB66B004FD50C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		661082C31B4EB66B004FD50C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		661082C61B4EB66B004FD50C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		661082CC1B4EB66B004FD50C /* LensesReminderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LensesReminderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		661082D11B4EB66B004FD50C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		661082D21B4EB66B004FD50C /* LensesReminderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensesReminderTests.swift; sourceTree = "<group>"; };
+		661082DC1B4FA687004FD50C /* SetupRecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupRecipeView.swift; sourceTree = "<group>"; };
+		661082E41B4FAE9D004FD50C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		66FE5FEE1B4FC615002F191F /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
+		66FE5FF01B4FCF16002F191F /* Lenses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Lenses.swift; path = ../Lenses.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +87,12 @@
 			children = (
 				661082B91B4EB66B004FD50C /* AppDelegate.swift */,
 				661082BE1B4EB66B004FD50C /* ViewController.swift */,
-				661082C01B4EB66B004FD50C /* Main.storyboard */,
+				661082DC1B4FA687004FD50C /* SetupRecipeView.swift */,
+				661082E41B4FAE9D004FD50C /* Main.storyboard */,
 				661082C31B4EB66B004FD50C /* Images.xcassets */,
 				661082C51B4EB66B004FD50C /* LaunchScreen.xib */,
 				661082BB1B4EB66B004FD50C /* LensesReminder.xcdatamodeld */,
+				66FE5FF01B4FCF16002F191F /* Lenses.swift */,
 				661082B71B4EB66B004FD50C /* Supporting Files */,
 			);
 			path = LensesReminder;
@@ -93,6 +101,7 @@
 		661082B71B4EB66B004FD50C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				66FE5FED1B4FC60A002F191F /* assets */,
 				661082B81B4EB66B004FD50C /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -113,6 +122,14 @@
 				661082D11B4EB66B004FD50C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		66FE5FED1B4FC60A002F191F /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				66FE5FEE1B4FC615002F191F /* save.png */,
+			);
+			name = assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,9 +212,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				661082C21B4EB66B004FD50C /* Main.storyboard in Resources */,
 				661082C71B4EB66B004FD50C /* LaunchScreen.xib in Resources */,
 				661082C41B4EB66B004FD50C /* Images.xcassets in Resources */,
+				66FE5FEF1B4FC615002F191F /* save.png in Resources */,
+				661082E51B4FAE9D004FD50C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,8 +233,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				661082DD1B4FA687004FD50C /* SetupRecipeView.swift in Sources */,
 				661082BF1B4EB66B004FD50C /* ViewController.swift in Sources */,
 				661082BA1B4EB66B004FD50C /* AppDelegate.swift in Sources */,
+				66FE5FF11B4FCF16002F191F /* Lenses.swift in Sources */,
 				661082BD1B4EB66B004FD50C /* LensesReminder.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,14 +260,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		661082C01B4EB66B004FD50C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				661082C11B4EB66B004FD50C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		661082C51B4EB66B004FD50C /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -276,7 +288,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -321,7 +334,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -346,7 +360,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				INFOPLIST_FILE = LensesReminder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -356,7 +372,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				INFOPLIST_FILE = LensesReminder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -415,6 +433,7 @@
 				661082D81B4EB66B004FD50C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		661082D91B4EB66B004FD50C /* Build configuration list for PBXNativeTarget "LensesReminderTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +442,7 @@
 				661082DB1B4EB66B004FD50C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
