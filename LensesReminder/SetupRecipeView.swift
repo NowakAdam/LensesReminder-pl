@@ -10,7 +10,10 @@ import UIKit
 import CoreData
 
 class SetupRecipeView: UIViewController {
-
+    
+var lensesarray = [NSManagedObject]()
+    
+    
     @IBOutlet weak var setupRecipeScrollView: UIScrollView!
     //textFields
     
@@ -34,13 +37,18 @@ class SetupRecipeView: UIViewController {
     @IBOutlet weak var blizOLOsTextField: UITextField!
     @IBOutlet weak var blizOLPryzmaTextField: UITextField!
     
+    @IBOutlet weak var zapisanoLabel: UILabel!
     
+     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
+        
         // Do any additional setup after loading the view.
         setupRecipeScrollView.contentSize.height = 600
-
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,31 +80,39 @@ class SetupRecipeView: UIViewController {
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let lensesEntity = NSEntityDescription.entityForName("Lenses", inManagedObjectContext:context)
-    //Dal=============================================================================================
-        var newLeftDLense = Lenses(entity:lensesEntity!, insertIntoManagedObjectContext:context)
-        var newRightDLense = Lenses(entity: lensesEntity!, insertIntoManagedObjectContext:context)
-        newRightDLense.dal_sfera = dalOPSferaTextField.text
-        newRightDLense.dal_cylinder = dalOPcylinderTextField.text
-        newRightDLense.dal_os = dalOPOsTextField.text
-        newRightDLense.dal_pryzma = dalOPPryzmaTextField.text
-        newLeftDLense.dal_sfera = dalOLSferaTextField.text
-        newLeftDLense.dal_cylinder = dalOLCylinderTextField.text
-        newLeftDLense.dal_os = dalOLOsTextField.text
-        newLeftDLense.dal_pryzma = dalOLPryzmaTextField.text
-    //Bliż=============================================================================================
-        var newLeftBLense = Lenses(entity: lensesEntity!, insertIntoManagedObjectContext: context)
-        var newRightBLense = Lenses(entity: lensesEntity!, insertIntoManagedObjectContext: context)
-        newLeftBLense.bliz_sfera = blizOLSferaTextField.text
-        newLeftBLense.bliz_cylinder = blizOLCylinderTextField.text
-        newLeftBLense.bliz_os = blizOLOsTextField.text
-        newLeftBLense.bliz_pryzma = blizOLPryzmaTextField.text
-        newRightBLense.bliz_sfera = blizOPSferaTextField.text
-        newRightBLense.bliz_cylinder = blizOPCylinderTextField.text
-        newRightBLense.bliz_os = blizOPOsTextField.text
-        newRightBLense.bliz_pryzma = blizOPPryzmaTextField.text
-        
-    }
- 
+    //=============================================================================================
 
+    var thisLense = NSEntityDescription.insertNewObjectForEntityForName("Lenses", inManagedObjectContext: self.managedObjectContext) as! Lenses
+        
+        
+        thisLense.dal_right_sfera = dalOPSferaTextField.text
+        thisLense.dal_right_cylinder = dalOPcylinderTextField.text
+        thisLense.dal_right_os = dalOPOsTextField.text
+        thisLense.dal_right_pryzma = dalOPPryzmaTextField.text
+        thisLense.dal_left_sfera = dalOLSferaTextField.text
+        thisLense.dal_left_cylinder = dalOLCylinderTextField.text
+        thisLense.dal_left_os = dalOLOsTextField.text
+        thisLense.dal_left_pryzma = dalOLPryzmaTextField.text
+        thisLense.bliz_left_sfera = blizOLSferaTextField.text
+        thisLense.bliz_left_cylinder = blizOLCylinderTextField.text
+        thisLense.bliz_left_os = blizOLOsTextField.text
+        thisLense.bliz_left_pryzma = blizOLPryzmaTextField.text
+        thisLense.bliz_right_sfera = blizOPSferaTextField.text
+        thisLense.bliz_right_cylinder = blizOPCylinderTextField.text
+        thisLense.bliz_right_os = blizOPOsTextField.text
+        thisLense.bliz_right_pryzma = blizOPPryzmaTextField.text
+        
+        appDel.saveContext()
+        
+        var request = NSFetchRequest(entityName: "Lenses")
+        var error:NSError? = nil
+        
+        var results:NSArray = managedObjectContext.executeFetchRequest(request, error: &error)!
+        
+        for res in results {
+    lensesarray.append(thisLense)
+            zapisanoLabel.text = "Zapisano!"
+        }
+    }
 
 }

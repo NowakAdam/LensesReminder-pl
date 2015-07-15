@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,7 +23,27 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+//usuwanie danych z CoreData
+    @IBAction func clearCoreDataButtonTapped(sender: UIButton) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let fetchRequest = NSFetchRequest(entityName: "Lenses")
+        var error: NSError?
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error)
+            as! [NSManagedObject]?
+        if let results = fetchedResults
+        {
+            for (var i=0; i < results.count; i++)
+            {
+                let value = results[i]
+                managedContext.deleteObject(value)
+                managedContext.save(nil)
+            }
+        }
+        
+        
+    }
+ 
 }
 
