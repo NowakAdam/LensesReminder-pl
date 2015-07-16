@@ -12,8 +12,6 @@ import CoreData
 class ViewController: UIViewController {
 
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -26,6 +24,14 @@ class ViewController: UIViewController {
 //usuwanie danych z CoreData
     @IBAction func clearCoreDataButtonTapped(sender: UIButton) {
         
+        delete()
+        
+    }
+    
+    
+    //helper
+    
+    func delete(){
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         let fetchRequest = NSFetchRequest(entityName: "Lenses")
@@ -44,6 +50,7 @@ class ViewController: UIViewController {
         
         
     }
- 
-}
+
+    }
+
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6608A3871B56A1050037CD0F /* editRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6608A3861B56A1050037CD0F /* editRecipeView.swift */; };
 		661082BA1B4EB66B004FD50C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661082B91B4EB66B004FD50C /* AppDelegate.swift */; };
 		661082BD1B4EB66B004FD50C /* LensesReminder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 661082BB1B4EB66B004FD50C /* LensesReminder.xcdatamodeld */; };
 		661082BF1B4EB66B004FD50C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661082BE1B4EB66B004FD50C /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6608A3861B56A1050037CD0F /* editRecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editRecipeView.swift; sourceTree = "<group>"; };
 		661082B41B4EB66B004FD50C /* LensesReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LensesReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		661082B81B4EB66B004FD50C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		661082B91B4EB66B004FD50C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				661082BE1B4EB66B004FD50C /* ViewController.swift */,
 				661082DC1B4FA687004FD50C /* SetupRecipeView.swift */,
 				66FE5FF21B53E8B3002F191F /* ShowRecipeView.swift */,
+				6608A3861B56A1050037CD0F /* editRecipeView.swift */,
 				661082E41B4FAE9D004FD50C /* Main.storyboard */,
 				661082C31B4EB66B004FD50C /* Images.xcassets */,
 				661082C51B4EB66B004FD50C /* LaunchScreen.xib */,
@@ -238,6 +241,7 @@
 			files = (
 				661082DD1B4FA687004FD50C /* SetupRecipeView.swift in Sources */,
 				66FE5FF51B550D67002F191F /* Lenses.swift in Sources */,
+				6608A3871B56A1050037CD0F /* editRecipeView.swift in Sources */,
 				66FE5FF31B53E8B3002F191F /* ShowRecipeView.swift in Sources */,
 				661082BF1B4EB66B004FD50C /* ViewController.swift in Sources */,
 				661082BA1B4EB66B004FD50C /* AppDelegate.swift in Sources */,

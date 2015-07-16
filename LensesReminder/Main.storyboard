@@ -80,10 +80,10 @@
             </objects>
             <point key="canvasLocation" x="1192" y="317"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Recipe View-->
         <scene sceneID="c5e-Zd-cBt">
             <objects>
-                <viewController id="CLX-CI-3wc" sceneMemberID="viewController">
+                <viewController id="CLX-CI-3wc" customClass="editRecipeView" customModule="LensesReminder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nlK-Dy-EVb"/>
                         <viewControllerLayoutGuide type="bottom" id="qfC-i7-5KD"/>
@@ -93,7 +93,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nqw-0f-tRm">
-                                <rect key="frame" x="26" y="136" width="318" height="225"/>
+                                <rect key="frame" x="0.0" y="64" width="318" height="225"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DAL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qr1-PS-ygE">
                                         <rect key="frame" x="20" y="38" width="33" height="21"/>
@@ -243,6 +243,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="SaveEditButtonTapped:" destination="CLX-CI-3wc" eventType="touchUpInside" id="KN3-Rk-r16"/>
                                             <action selector="zapiszButtonTapped:" destination="EB6-pt-975" eventType="touchUpInside" id="mJc-3u-Iov"/>
                                         </connections>
                                     </button>
@@ -262,6 +263,25 @@
                             <constraint firstItem="nqw-0f-tRm" firstAttribute="top" secondItem="nlK-Dy-EVb" secondAttribute="bottom" id="3o2-zT-aBv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bliz_left_cylinder" destination="ehY-t3-YKE" id="9tJ-Mn-qdG"/>
+                        <outlet property="bliz_left_os" destination="SUg-4U-dn6" id="Uqo-hx-YYq"/>
+                        <outlet property="bliz_left_pryzma" destination="cTX-WJ-ckg" id="I3X-og-Bfi"/>
+                        <outlet property="bliz_left_sfera" destination="dDF-QU-XmJ" id="fqn-mj-iXN"/>
+                        <outlet property="bliz_right_cylinder" destination="fGK-1u-HUs" id="hic-VB-2uV"/>
+                        <outlet property="bliz_right_os" destination="Xtw-15-MCE" id="hry-J4-XGo"/>
+                        <outlet property="bliz_right_pryzma" destination="uTq-0n-CW7" id="klC-IE-paR"/>
+                        <outlet property="bliz_right_sfera" destination="OPt-nv-G3e" id="pm6-xR-JUx"/>
+                        <outlet property="dal_left_cylinder" destination="fU2-V6-JiF" id="ce3-Yh-sMB"/>
+                        <outlet property="dal_left_os" destination="QKk-9l-MTs" id="2Io-BL-Yyx"/>
+                        <outlet property="dal_left_pryzma" destination="W6a-gW-I6w" id="8Bx-g6-1mm"/>
+                        <outlet property="dal_left_sfera" destination="qat-0d-WPp" id="nan-N4-BXg"/>
+                        <outlet property="dal_right_cylinder" destination="F4R-yq-AOK" id="myl-4g-T97"/>
+                        <outlet property="dal_right_os" destination="uLH-mX-a3t" id="T8w-17-zoM"/>
+                        <outlet property="dal_right_pryzma" destination="mt7-7E-58j" id="fw7-Nb-hKc"/>
+                        <outlet property="dal_right_sfera" destination="l1o-1Z-QLh" id="d9V-47-7ib"/>
+                        <outlet property="zapisanoLabel" destination="iIL-Fg-4lB" id="iIT-Aa-jkd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUZ-i3-PCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -428,23 +448,23 @@
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvm-wA-2yF">
-                                                        <rect key="frame" x="179" y="169" width="126" height="56"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <state key="normal" title="Zapisz" image="save.png">
-                                                            <color key="titleColor" red="0.46274509803921571" green="0.88627450980392153" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="zapiszButtonTapped:" destination="EB6-pt-975" eventType="touchUpInside" id="bB5-yN-fBt"/>
-                                                        </connections>
-                                                    </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ef0-HT-fHa">
                                                         <rect key="frame" x="26" y="181" width="154" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.40784313729999999" green="0.83137254900000002" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FY6-Mf-eO8">
+                                                        <rect key="frame" x="184" y="161" width="126" height="56"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <state key="normal" title="Zapisz" image="save.png">
+                                                            <color key="titleColor" red="0.46274509800000002" green="0.8862745098" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="zapiszButtonTapped:" destination="EB6-pt-975" eventType="touchUpInside" id="mtW-Hr-Lyn"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
