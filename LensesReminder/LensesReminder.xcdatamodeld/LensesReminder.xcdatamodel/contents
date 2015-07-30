@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Date" representedClassName="Date" syncable="YES">
+        <attribute name="changeLensesDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dayToAdd" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Lenses" representedClassName="Lenses" syncable="YES">
         <attribute name="bliz_left_cylinder" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bliz_left_os" optional="YES" attributeType="String" syncable="YES"/>
@@ -19,6 +24,7 @@
         <attribute name="dal_right_sfera" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Date" positionX="-63" positionY="99" width="128" height="90"/>
         <element name="Lenses" positionX="-63" positionY="-18" width="128" height="285"/>
     </elements>
 </model>
