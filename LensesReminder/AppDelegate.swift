@@ -16,10 +16,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+
+       //Actions
+        var firstAction:UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        firstAction.identifier = "First"
+        firstAction.title = "Uwaga!!"
+        firstAction.activationMode = UIUserNotificationActivationMode.Background
+        firstAction.destructive = true
+        firstAction.authenticationRequired = false
+        
+        var secondAction:UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        secondAction.identifier = "Second"
+        secondAction.title = "Uwaga!!"
+        secondAction.activationMode = UIUserNotificationActivationMode.Foreground
+        secondAction.destructive = false
+        secondAction.authenticationRequired = false
+
+        //Category
+        var firstCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        firstCategory.identifier = "FirstCat"
+        var defaultActions:NSArray = [firstAction,secondAction]
+        var minimalActions:NSArray = [firstAction]
+        
+        firstCategory.setActions(defaultActions as [AnyObject], forContext: UIUserNotificationActionContext.Default)
+        firstCategory.setActions(minimalActions as [AnyObject], forContext: UIUserNotificationActionContext.Default)
+        
+        //NSSet for catefories
+        
+        let categories:NSSet = NSSet(object: firstCategory)
+        
+        
+        let types:UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+        let mySettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)
+        
         return true
     }
 
+   
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

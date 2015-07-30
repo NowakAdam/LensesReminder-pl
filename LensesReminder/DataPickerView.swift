@@ -116,7 +116,7 @@ class DataPickerView: UIViewController {
     func pickDate()-> String{
      
         var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
         var strDate = dateFormatter.stringFromDate(myDatePicker.date)
         
         return strDate
@@ -129,7 +129,7 @@ class DataPickerView: UIViewController {
         var theCalendar = NSCalendar.currentCalendar()
         var nextDate = theCalendar.dateByAddingComponents(dayComponenet, toDate: myDatePicker.date, options: nil)
         var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
         var finalDate = dateFormatter.stringFromDate(nextDate!)
         
         return finalDate
@@ -155,4 +155,5 @@ class DataPickerView: UIViewController {
             return 0
         }
     }
+
 }
