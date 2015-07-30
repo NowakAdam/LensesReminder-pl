@@ -20,6 +20,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+     showDate()
+
+   
     }
     override func viewDidAppear(animated: Bool) {
            showDate()
@@ -64,9 +67,30 @@ class ViewController: UIViewController {
             var keyDateExpire = "changeLensesDate"
             var dateToLabel = res.valueForKey(keyDate) as? String
             var expireDateToLabel = res.valueForKey(keyDateExpire) as? String
+            
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
+            let expireDateToAlert = dateFormatter.dateFromString(expireDateToLabel!)
+            
+            
+            
             self.infoLabel.text = "zakup dnia " + dateToLabel!
             self.expireInfoLabel.text = "soczewki ważne do: " + expireDateToLabel!
+            alert(expireDateToAlert!)
+            if expireDateToAlert != nil{
+               
+            
+            }
         }
+    }
+    func alert(expireDate:AnyObject){
+        var notification:UILocalNotification = UILocalNotification()
+        notification.category = "FirstCat"
+        notification.alertBody = "Soczewki straciły ważność"
+        notification.fireDate = expireDate as? NSDate
+        notification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
     
 }
