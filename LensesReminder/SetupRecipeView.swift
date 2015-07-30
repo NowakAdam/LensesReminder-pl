@@ -11,51 +11,39 @@ import CoreData
 
 class SetupRecipeView: UIViewController {
     
-var lensesarray = [NSManagedObject]()
-    
-    
+    var lensesarray = [NSManagedObject]()
     @IBOutlet weak var setupRecipeScrollView: UIScrollView!
     //textFields
-    
     @IBOutlet weak var dalOPSferaTextField: UITextField!
     @IBOutlet weak var dalOPcylinderTextField: UITextField!
     @IBOutlet weak var dalOPOsTextField: UITextField!
     @IBOutlet weak var dalOPPryzmaTextField: UITextField!
-    
     @IBOutlet weak var dalOLSferaTextField: UITextField!
     @IBOutlet weak var dalOLCylinderTextField: UITextField!
     @IBOutlet weak var dalOLOsTextField: UITextField!
     @IBOutlet weak var dalOLPryzmaTextField: UITextField!
-    
     @IBOutlet weak var blizOPSferaTextField: UITextField!
     @IBOutlet weak var blizOPCylinderTextField: UITextField!
     @IBOutlet weak var blizOPOsTextField: UITextField!
     @IBOutlet weak var blizOPPryzmaTextField: UITextField!
-    
     @IBOutlet weak var blizOLSferaTextField: UITextField!
     @IBOutlet weak var blizOLCylinderTextField: UITextField!
     @IBOutlet weak var blizOLOsTextField: UITextField!
     @IBOutlet weak var blizOLPryzmaTextField: UITextField!
-    
     @IBOutlet weak var zapisanoLabel: UILabel!
     
      let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        
         // Do any additional setup after loading the view.
         setupRecipeScrollView.contentSize.height = 600
-    
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     @IBAction func zapiszButtonTapped(sender: UIButton) {
         
@@ -80,10 +68,7 @@ var lensesarray = [NSManagedObject]()
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let lensesEntity = NSEntityDescription.entityForName("Lenses", inManagedObjectContext:context)
-    //=============================================================================================
-
-    var thisLense = NSEntityDescription.insertNewObjectForEntityForName("Lenses", inManagedObjectContext: self.managedObjectContext) as! Lenses
-        
+        var thisLense = NSEntityDescription.insertNewObjectForEntityForName("Lenses", inManagedObjectContext: self.managedObjectContext) as! Lenses
         
         thisLense.dal_right_sfera = dalOPSferaTextField.text
         thisLense.dal_right_cylinder = dalOPcylinderTextField.text
@@ -106,7 +91,6 @@ var lensesarray = [NSManagedObject]()
         
         var request = NSFetchRequest(entityName: "Lenses")
         var error:NSError? = nil
-        
         var results:NSArray = managedObjectContext.executeFetchRequest(request, error: &error)!
         
         for res in results {
@@ -114,5 +98,4 @@ var lensesarray = [NSManagedObject]()
             zapisanoLabel.text = "Zapisano!"
         }
     }
-
 }

@@ -10,36 +10,27 @@ import UIKit
 import CoreData
 
 class ShowRecipeView: UIViewController,NSFetchedResultsControllerDelegate {
-
     
     //labels
     @IBOutlet weak var dal_right_sfera: UILabel!
     @IBOutlet weak var dal_right_cylinder: UILabel!
     @IBOutlet weak var dal_right_os: UILabel!
     @IBOutlet weak var dal_right_pryzma: UILabel!
-    
     @IBOutlet weak var dal_left_sfera: UILabel!
     @IBOutlet weak var dal_left_cylinder: UILabel!
     @IBOutlet weak var dal_left_os: UILabel!
     @IBOutlet weak var dal_left_pryzma: UILabel!
-    
     @IBOutlet weak var bliz_right_sfera: UILabel!
     @IBOutlet weak var bliz_right_cylinder: UILabel!
     @IBOutlet weak var bliz_right_os: UILabel!
     @IBOutlet weak var bliz_right_pryzma: UILabel!
-    
     @IBOutlet weak var bliz_left_sfera: UILabel!
     @IBOutlet weak var bliz_left_cylinder: UILabel!
     @IBOutlet weak var bliz_left_os: UILabel!
     @IBOutlet weak var bliz_left_pryzma: UILabel!
     
-    var thislense: AnyObject?
-    
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
     var fetchedResultsController:NSFetchedResultsController = NSFetchedResultsController()
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +39,6 @@ class ShowRecipeView: UIViewController,NSFetchedResultsControllerDelegate {
         var context :NSManagedObjectContext = appDel.managedObjectContext!
         var request = NSFetchRequest(entityName: "Lenses")
         request.returnsObjectsAsFaults = false
-       
         var results:NSArray = context.executeFetchRequest(request, error: nil)!
         
         if (results.count > 0){
@@ -60,66 +50,40 @@ class ShowRecipeView: UIViewController,NSFetchedResultsControllerDelegate {
             dal_right_cylinder.text = res.valueForKey("dal_right_cylinder") as? String
             dal_right_os.text = res.valueForKey("dal_right_os") as? String
             dal_right_pryzma.text = res.valueForKey("dal_right_pryzma") as? String
-            
             dal_left_sfera.text = res.valueForKey("dal_left_sfera") as? String
             dal_left_cylinder.text = res.valueForKey("dal_left_cylinder") as? String
             dal_left_os.text = res.valueForKey("dal_left_os") as? String
             dal_left_pryzma.text = res.valueForKey("dal_left_pryzma") as? String
-            
             bliz_right_sfera.text = res.valueForKey("bliz_right_sfera") as? String
             bliz_right_cylinder.text = res.valueForKey("bliz_right_cylinder") as? String
             bliz_right_os.text = res.valueForKey("bliz_right_os") as? String
             bliz_right_pryzma.text = res.valueForKey("bliz_right_pryzma") as? String
-            
             bliz_left_sfera.text = res.valueForKey("bliz_left_sfera") as? String
             bliz_left_cylinder.text = res.valueForKey("bliz_left_cylinder") as? String
             bliz_left_os.text = res.valueForKey("bliz_left_os") as? String
             bliz_left_pryzma.text = res.valueForKey("bliz_left_pryzma") as? String
         }else {
-            
             dal_right_sfera.text = "B/D"
             dal_right_cylinder.text = "B/D"
             dal_right_os.text = "B/D"
             dal_right_pryzma.text = "B/D"
-            
             dal_left_sfera.text = "B/D"
             dal_left_cylinder.text = "B/D"
             dal_left_os.text = "B/D"
             dal_left_pryzma.text = "B/D"
-            
             bliz_right_sfera.text = "B/D"
             bliz_right_cylinder.text = "B/D"
             bliz_right_os.text = "B/D"
             bliz_right_pryzma.text = "B/D"
-            
             bliz_left_sfera.text = "B/D"
             bliz_left_cylinder.text = "B/D"
             bliz_left_os.text = "B/D"
             bliz_left_pryzma.text = "B/D"
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-  
-
-    //Helper
-    func lenseFetchRequest() -> NSFetchRequest {
-        let fetchRequest = NSFetchRequest(entityName: "Lenses")
-        let sortDescriptor = NSSortDescriptor(key: "dal_right_sfera", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        return fetchRequest
-    }
-    
-    func getFetchedResultController() -> NSFetchedResultsController {
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: lenseFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        return fetchedResultsController
-    }
-    
-    
-
-
 }

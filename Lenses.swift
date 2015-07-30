@@ -28,5 +28,5 @@ class Lenses: NSManagedObject {
     @NSManaged var bliz_right_os: String
     @NSManaged var bliz_right_pryzma: String
     @NSManaged var bliz_right_sfera: String
-
+    
 }

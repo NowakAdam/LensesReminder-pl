@@ -11,21 +11,31 @@ import CoreData
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var fillRecipeButton: UIButton!
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var expireInfoLabel: UILabel!
     
-    
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
+    var fetchedResultsController:NSFetchedResultsController = NSFetchedResultsController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
+    override func viewDidAppear(animated: Bool) {
+           showDate()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-//usuwanie danych z CoreData
+
+    
     @IBAction func clearCoreDataButtonTapped(sender: UIButton) {
-        
+        delete()
+    }
+
+//helper
+    
+    func delete(){
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         let fetchRequest = NSFetchRequest(entityName: "Lenses")
@@ -41,9 +51,24 @@ class ViewController: UIViewController {
                 managedContext.save(nil)
             }
         }
-        
-        
     }
- 
+    func showDate(){
+        let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        var request = NSFetchRequest(entityName: "Date")
+        request.returnsObjectsAsFaults = false
+        var results:NSArray = context.executeFetchRequest(request, error: nil)!
+        if (results.count > 0) {
+            var res = results[0] as! NSManagedObject
+            var keyDate = "date"
+            var keyDateExpire = "changeLensesDate"
+            var dateToLabel = res.valueForKey(keyDate) as? String
+            var expireDateToLabel = res.valueForKey(keyDateExpire) as? String
+            self.infoLabel.text = "zakup dnia " + dateToLabel!
+            self.expireInfoLabel.text = "soczewki ważne do: " + expireDateToLabel!
+        }
+    }
+    
 }
+
 
