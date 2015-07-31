@@ -9,46 +9,60 @@
 import UIKit
 import CoreData
 
-
 class FunctionsCoreData: UIViewController,NSFetchedResultsControllerDelegate {
-    //=======================================Helpers=============================//
     /*
-    
+    *******saveData*******
     FunctionsCoreData.appDel()
-    var context:AnyObject = FunctionsCoreData.ManagedObjectContext
+    var context:AnyObject = FunctionsCoreData.ManagedObjectContext()
     thisObject = FunctionsCoreData.prepareEntity() as! EntityName
+    example:
     
+    thisObject.properity = UITextfield.text
+    FunctionsCoreData.SaveContextFunction()
+    let results:NSArray = FunctionsCoreData.executeRequest("EntityName")
+    for res in results{
+        objectArray.append(thisObject)
+    }
     
-    
-    Delete all:
+    *******Delete all:*******
     FunctionsCoreData.deleteData("entityName")
+    
+    *******Show Data:*******
+    FunctionsCoreData.appDel()
+    let request: AnyObject = functions.fetchRequest("entityName")
+    let results: AnyObject = functions.executeRequest("entityName")
+    example :
+    if (results.count > 0){
+    var counter = (results.count - 1 )
+    var res = results[counter] as! NSManagedObject
+    var keysArray = ["key"]
+    dal_right_sfera.text =  res.valueForKey("key") as? String
+    }
+    TODO:
+    *******EditData:*******
+    
+    
     
     
     */
-    //appDel()
-    //ManagedObjectContext()
-    //saveContext()
-    //prepareEntity() as! EntityName
     
-//AppDelegate
     func appDel()->AnyObject{
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         return appDelegate
     }
-//saveContext
+
     func SaveContextFunction(){
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.saveContext()
     }
     
-//ManagedObjectContext
     func managedObjectContext()->AnyObject{
         let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
         
         return managedObjectContext
     }
-//prepareEntity
+
     func prepareEntity(entityName:String)->AnyObject{
         
         appDel()
@@ -58,7 +72,7 @@ class FunctionsCoreData: UIViewController,NSFetchedResultsControllerDelegate {
         
         return thisObject
     }
-//fetchRequest
+
     func fetchRequest(entName:String)->AnyObject {
         var request = NSFetchRequest(entityName: entName)
         request.returnsObjectsAsFaults = false
@@ -67,23 +81,19 @@ class FunctionsCoreData: UIViewController,NSFetchedResultsControllerDelegate {
         return request
     }
     
-//fetchedResultsController
     func fetchedResultsController()->AnyObject{
         var fetchedResultsController:NSFetchedResultsController = NSFetchedResultsController()
         
         return fetchedResultsController
     }
     
-//executeSaveRequest
-    
-    func executeSaveRequest(entName:String)->NSArray{
+    func executeRequest(entName:String)->NSArray{
         var request = NSFetchRequest(entityName: entName)
         var error:NSError? = nil
         var results:NSArray = managedObjectContext().executeFetchRequest(request, error: &error)!
+        
         return results
     }
-
-//deleteData
     
     func deleteData(entName:String){
         let managedContext = appDel().managedObjectContext!
@@ -91,8 +101,7 @@ class FunctionsCoreData: UIViewController,NSFetchedResultsControllerDelegate {
         var error: NSError?
         let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error)
             as! [NSManagedObject]?
-        if let results = fetchedResults
-        {
+        if let results = fetchedResults {
             for (var i=0; i < results.count; i++)
             {
                 let value = results[i]
@@ -101,5 +110,4 @@ class FunctionsCoreData: UIViewController,NSFetchedResultsControllerDelegate {
             }
         }
     }
-
 }

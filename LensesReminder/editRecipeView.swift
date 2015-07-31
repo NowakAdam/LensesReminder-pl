@@ -29,11 +29,9 @@ class editRecipeView: UIViewController {
     @IBOutlet weak var bliz_left_os: UITextField!
     @IBOutlet weak var bliz_left_pryzma: UITextField!
     
-    
     var functions = FunctionsCoreData()
     var lensesarray = [NSManagedObject]()
     var preparedArray = [NSManagedObject]()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +39,7 @@ class editRecipeView: UIViewController {
            }
     @IBAction func SaveEditButtonTapped(sender: UIButton) {
 
-        self.functions.deleteData("Lenses")
+        functions.deleteData("Lenses")
         saveData()
         updateMainView()
     }
@@ -74,19 +72,21 @@ class editRecipeView: UIViewController {
         thisLense.bliz_right_pryzma = bliz_right_pryzma.text
         
         functions.SaveContextFunction()
-        var results = functions.executeSaveRequest("Lenses")
+        var results = functions.executeRequest("Lenses")
         
         for res in results {
             lensesarray.append(thisLense)
             zapisanoLabel.text = "Zapisano!"
-            println(thisLense)
+//            println(thisLense)
             }
     }
     
     func updateMainView(){
+        
         functions.appDel()
         let context: AnyObject = functions.managedObjectContext()
-        var results: NSArray = functions.fetchRequest("Lenses") as! NSArray
+        var results: NSArray = functions.executeRequest("Lenses") as NSArray
+        
         if (results.count > 0){
             var counter = (results.count - 1 )
             var res = results[counter] as! NSManagedObject

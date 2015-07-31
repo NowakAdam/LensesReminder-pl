@@ -20,39 +20,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        //Actions
         var firstAction:UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         firstAction.identifier = "First"
-        firstAction.title = "Uwaga!!"
+        firstAction.title = "First!!"
         firstAction.activationMode = UIUserNotificationActivationMode.Background
         firstAction.destructive = true
         firstAction.authenticationRequired = false
         
         var secondAction:UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         secondAction.identifier = "Second"
-        secondAction.title = "Uwaga!!"
+        secondAction.title = "Second!!"
         secondAction.activationMode = UIUserNotificationActivationMode.Foreground
         secondAction.destructive = false
         secondAction.authenticationRequired = false
+        
+        var thirdAction:UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        thirdAction.identifier = "third"
+        thirdAction.title = "Third!!"
+        thirdAction.activationMode = UIUserNotificationActivationMode.Foreground
+        thirdAction.destructive = false
+        thirdAction.authenticationRequired = false
 
         //Category
         var firstCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         firstCategory.identifier = "FirstCat"
-        var defaultActions:NSArray = [firstAction,secondAction]
-        var minimalActions:NSArray = [firstAction]
+        var defaultActions:NSArray = [firstAction,secondAction,thirdAction]
+        var minimalActions:NSArray = [firstAction,secondAction]
         
         firstCategory.setActions(defaultActions as [AnyObject], forContext: UIUserNotificationActionContext.Default)
-        firstCategory.setActions(minimalActions as [AnyObject], forContext: UIUserNotificationActionContext.Default)
-        
+        firstCategory.setActions(minimalActions as [AnyObject], forContext: UIUserNotificationActionContext.Minimal)
         //NSSet for catefories
         
         let categories:NSSet = NSSet(object: firstCategory)
         
         
         let types:UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
-        let mySettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
+        let mySettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: categories as Set<NSObject>)
         UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)
         
         return true
     }
-
+    func application(application: UIApplication,
+        handleActionWithIdentifier identifier:String?,
+        forLocalNotification notification:UILocalNotification,
+        completionHandler: (() -> Void)){
+            
+            if (identifier == "First"){
+                
+                NSNotificationCenter.defaultCenter().postNotificationName("action2Pressed", object: nil)
+                
+            }else if (identifier == "Second"){
+                NSNotificationCenter.defaultCenter().postNotificationName("action3Pressed", object: nil)
+                
+            }
+            
+            completionHandler()
+            
+    }
    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -63,13 +63,13 @@ class DataPickerView: UIViewController {
         functions.deleteData("Date")
         let context:NSManagedObjectContext = functions.appDel().managedObjectContext!
         var thisDate = functions.prepareEntity("Date") as! Date
-        var strDate = DateForm().dateToString(myDatePicker.date)
+        var strDate = dateform.dateToString(myDatePicker.date)
         var nextDate = addDaysToDate(calcDaysToAdd(stepValue))
             thisDate.dayToAdd = stepValue
             thisDate.date = strDate
             thisDate.changeLensesDate = nextDate
         functions.SaveContextFunction()
-        var results:NSArray = functions.fetchRequest("Date") as! NSArray
+        var results:NSArray = functions.executeRequest("Date")
         for res in results {
         dateArray.append(thisDate)
             self.selectedDate.text = "zapisano"

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ShowRecipeView: UIViewController,NSFetchedResultsControllerDelegate {
+class ShowRecipeView: UIViewController {
     
     //labels
     @IBOutlet weak var dal_right_sfera: UILabel!
@@ -29,22 +29,15 @@ class ShowRecipeView: UIViewController,NSFetchedResultsControllerDelegate {
     @IBOutlet weak var bliz_left_os: UILabel!
     @IBOutlet weak var bliz_left_pryzma: UILabel!
     
-
-    
-    let managedObjectContext: AnyObject = FunctionsCoreData().managedObjectContext()
-    
-//    FetchReqController()
-    
-    
+    let functions = FunctionsCoreData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FunctionsCoreData().appDel()
+        functions.appDel()
         
-        var request = NSFetchRequest(entityName: "Lenses")
-        request.returnsObjectsAsFaults = false
-        var results:NSArray = managedObjectContext.executeFetchRequest(request, error: nil)!
+        let request: AnyObject = functions.fetchRequest("Lenses")
+        let results: NSArray = functions.executeRequest("Lenses")
         
         if (results.count > 0){
             var counter = (results.count - 1 )

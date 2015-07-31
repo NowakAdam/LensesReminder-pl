@@ -99,8 +99,6 @@
 			children = (
 				661082B91B4EB66B004FD50C /* AppDelegate.swift */,
 				661082BE1B4EB66B004FD50C /* ViewController.swift */,
-				66B062B51B6B5F92009ACCF9 /* dateFormatter.swift */,
-				6628E7E31B6A58280024B10A /* FunctionsCoreData.swift */,
 				661082DC1B4FA687004FD50C /* SetupRecipeView.swift */,
 				66FE5FF21B53E8B3002F191F /* ShowRecipeView.swift */,
 				6608A3861B56A1050037CD0F /* editRecipeView.swift */,
@@ -109,6 +107,8 @@
 				661082C31B4EB66B004FD50C /* Images.xcassets */,
 				661082C51B4EB66B004FD50C /* LaunchScreen.xib */,
 				661082BB1B4EB66B004FD50C /* LensesReminder.xcdatamodeld */,
+				6628E7E31B6A58280024B10A /* FunctionsCoreData.swift */,
+				66B062B51B6B5F92009ACCF9 /* dateFormatter.swift */,
 				66FE5FF41B550D67002F191F /* Lenses.swift */,
 				66DE0B2D1B68D14200F27FEC /* Date.swift */,
 				661082B71B4EB66B004FD50C /* Supporting Files */,
@@ -386,7 +386,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				INFOPLIST_FILE = LensesReminder/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -398,7 +398,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				INFOPLIST_FILE = LensesReminder/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
