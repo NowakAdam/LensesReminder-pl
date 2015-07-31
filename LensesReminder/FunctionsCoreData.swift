@@ -32,17 +32,17 @@ class FunctionsCoreData: UIViewController,NSFetchedResultsControllerDelegate {
     let request: AnyObject = functions.fetchRequest("entityName")
     let results: AnyObject = functions.executeRequest("entityName")
     example :
+    
     if (results.count > 0){
     var counter = (results.count - 1 )
     var res = results[counter] as! NSManagedObject
     var keysArray = ["key"]
     dal_right_sfera.text =  res.valueForKey("key") as? String
     }
+    
     TODO:
     *******EditData:*******
-    
-    
-    
+
     
     */
     
@@ -81,12 +81,6 @@ class FunctionsCoreData: UIViewController,NSFetchedResultsControllerDelegate {
         return request
     }
     
-    func fetchedResultsController()->AnyObject{
-        var fetchedResultsController:NSFetchedResultsController = NSFetchedResultsController()
-        
-        return fetchedResultsController
-    }
-    
     func executeRequest(entName:String)->NSArray{
         var request = NSFetchRequest(entityName: entName)
         var error:NSError? = nil
@@ -95,6 +89,12 @@ class FunctionsCoreData: UIViewController,NSFetchedResultsControllerDelegate {
         return results
     }
     
+    func fetchedResultsController()->AnyObject{
+        var fetchedResultsController:NSFetchedResultsController = NSFetchedResultsController()
+        
+        return fetchedResultsController
+    }
+
     func deleteData(entName:String){
         let managedContext = appDel().managedObjectContext!
         let fetchRequest = NSFetchRequest(entityName: entName)
