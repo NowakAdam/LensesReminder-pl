@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class editRecipeView: UIViewController, NSFetchedResultsControllerDelegate {
+class editRecipeView: UIViewController {
 
     @IBOutlet weak var zapisanoLabel: UILabel!
     @IBOutlet weak var dal_right_sfera: UITextField!
@@ -29,16 +29,19 @@ class editRecipeView: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var bliz_left_os: UITextField!
     @IBOutlet weak var bliz_left_pryzma: UITextField!
     
-    var lensesarray = [NSManagedObject]()
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
-    var fetchedResultsController:NSFetchedResultsController = NSFetchedResultsController()
     
+    var functions = FunctionsCoreData()
+    var lensesarray = [NSManagedObject]()
+    var preparedArray = [NSManagedObject]()
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         updateMainView()
            }
     @IBAction func SaveEditButtonTapped(sender: UIButton) {
-        delete()
+
+        self.functions.deleteData("Lenses")
         saveData()
         updateMainView()
     }
@@ -49,10 +52,9 @@ class editRecipeView: UIViewController, NSFetchedResultsControllerDelegate {
     //helpers
     
     func saveData(){
-        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context:NSManagedObjectContext = appDel.managedObjectContext!
-        let lensesEntity = NSEntityDescription.entityForName("Lenses", inManagedObjectContext:context)
-        var thisLense = NSEntityDescription.insertNewObjectForEntityForName("Lenses", inManagedObjectContext: self.managedObjectContext) as! Lenses
+        functions.appDel()
+        var context: AnyObject = functions.managedObjectContext()
+        var thisLense = functions.prepareEntity("Lenses") as! Lenses
         
         thisLense.dal_right_sfera = dal_right_sfera.text
         thisLense.dal_right_cylinder = dal_right_cylinder.text
@@ -71,25 +73,20 @@ class editRecipeView: UIViewController, NSFetchedResultsControllerDelegate {
         thisLense.bliz_right_os = bliz_right_os.text
         thisLense.bliz_right_pryzma = bliz_right_pryzma.text
         
-        appDel.saveContext()
-        
-        var request = NSFetchRequest(entityName: "Lenses")
-        var error:NSError? = nil
-        var results:NSArray = managedObjectContext.executeFetchRequest(request, error: &error)!
+        functions.SaveContextFunction()
+        var results = functions.executeSaveRequest("Lenses")
         
         for res in results {
             lensesarray.append(thisLense)
             zapisanoLabel.text = "Zapisano!"
-        }
+            println(thisLense)
+            }
     }
     
     func updateMainView(){
-        let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        let context:NSManagedObjectContext = appDel.managedObjectContext!
-        var request = NSFetchRequest(entityName: "Lenses")
-        request.returnsObjectsAsFaults = false
-        var results:NSArray = context.executeFetchRequest(request, error: nil)!
-        
+        functions.appDel()
+        let context: AnyObject = functions.managedObjectContext()
+        var results: NSArray = functions.fetchRequest("Lenses") as! NSArray
         if (results.count > 0){
             var counter = (results.count - 1 )
             var res = results[counter] as! NSManagedObject
@@ -130,22 +127,6 @@ class editRecipeView: UIViewController, NSFetchedResultsControllerDelegate {
             bliz_left_cylinder.text = "B/D"
             bliz_left_os.text = "B/D"
             bliz_left_pryzma.text = "B/D"
-        }
-    }
-    
-    func delete(){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        let fetchRequest = NSFetchRequest(entityName: "Lenses")
-        var error: NSError?
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error)
-            as! [NSManagedObject]?
-        if let results = fetchedResults {
-            for (var i=0; i < results.count; i++) {
-                let value = results[i]
-                managedContext.deleteObject(value)
-                managedContext.save(nil)
-            }
         }
     }
 }

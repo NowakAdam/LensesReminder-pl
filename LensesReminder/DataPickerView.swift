@@ -10,20 +10,21 @@ import UIKit
 import CoreData
 
 class DataPickerView: UIViewController {
+    
     @IBOutlet weak var myDatePicker: UIDatePicker!
     @IBOutlet weak var selectedDate: UILabel!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var stepperInfoLabel: UILabel!
-    var stepValue = ""
     
+    var stepValue = ""
+    let dateform = DateForm()
+    let functions = FunctionsCoreData()
+    var dateArray = [NSManagedObject]()
     
     @IBAction func stepperValueChange(sender: AnyObject) {
-        
         var step : UIStepper = sender as! UIStepper
         var stepVal = step.value.description
-        
-       stepValue = getStepValue(stepVal)
-        
+        stepValue = getStepValue(stepVal)
         if  stepVal == "1.0" {
             stepperInfoLabel.text = "jednodniowe"
         } else if stepVal == "2.0" {
@@ -37,20 +38,14 @@ class DataPickerView: UIViewController {
         } else {
             stepperInfoLabel.text = ""
         }
-     
     }
 
-    
-    var dateArray = [NSManagedObject]()
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         stepper.autorepeat = true
         stepper.wraps = true
         stepper.maximumValue = 5
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,73 +54,35 @@ class DataPickerView: UIViewController {
     }
     @IBAction func datePickerAction(sender: AnyObject) {
         
-       var strDate =  pickDate()
+        var strDate =  dateform.dateToString(myDatePicker.date)
         self.selectedDate.text = strDate
         
     }
     @IBAction func zapiszButtonTapped(sender: AnyObject) {
         
-        clearDate()
-        
-        //var daysToAdd = 2
-        
-        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context:NSManagedObjectContext = appDel.managedObjectContext!
-        let DateEntity = NSEntityDescription.entityForName("Date", inManagedObjectContext: context)
-        var thisDate = NSEntityDescription.insertNewObjectForEntityForName("Date", inManagedObjectContext: self.managedObjectContext) as! Date
-        
-        var strDate = pickDate()
+        functions.deleteData("Date")
+        let context:NSManagedObjectContext = functions.appDel().managedObjectContext!
+        var thisDate = functions.prepareEntity("Date") as! Date
+        var strDate = DateForm().dateToString(myDatePicker.date)
         var nextDate = addDaysToDate(calcDaysToAdd(stepValue))
-        thisDate.dayToAdd = stepValue
-        thisDate.date = strDate
-        thisDate.changeLensesDate = nextDate
-        
-        appDel.saveContext()
-        
-        var request = NSFetchRequest(entityName: "Date")
-        var error:NSError? = nil
-        var results:NSArray = managedObjectContext.executeFetchRequest(request, error: &error)!
-        
+            thisDate.dayToAdd = stepValue
+            thisDate.date = strDate
+            thisDate.changeLensesDate = nextDate
+        functions.SaveContextFunction()
+        var results:NSArray = functions.fetchRequest("Date") as! NSArray
         for res in results {
         dateArray.append(thisDate)
             self.selectedDate.text = "zapisano"
             println(res)
         }
-        
     }
     
     //helpers
-    
-    func clearDate(){
-        
-        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDel.managedObjectContext!
-        let request = NSFetchRequest(entityName: "Date")
-        var error:NSError?
-        let fetchedResults = managedContext.executeFetchRequest(request, error: &error) as! [NSManagedObject]?
-        
-        if let results = fetchedResults {
-            for (var i = 0 ; i < results.count; i++){
-                let value = results[i]
-                managedContext.deleteObject(value)
-                managedContext.save(nil)
-            }
-        }
-    }
-    
-    func pickDate()-> String{
-     
-        var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
-        var strDate = dateFormatter.stringFromDate(myDatePicker.date)
-        
-        return strDate
-    }
+
     func addDaysToDate(daysToAdd:Int)-> String{
 
         var dayComponenet = NSDateComponents()
         dayComponenet.day = daysToAdd
-        
         var theCalendar = NSCalendar.currentCalendar()
         var nextDate = theCalendar.dateByAddingComponents(dayComponenet, toDate: myDatePicker.date, options: nil)
         var dateFormatter = NSDateFormatter()
@@ -139,7 +96,6 @@ class DataPickerView: UIViewController {
         return stepValue
     }
     func calcDaysToAdd(stepValue:String)->Int{
-        
         
         if  stepValue == "1.0" {
             return 1

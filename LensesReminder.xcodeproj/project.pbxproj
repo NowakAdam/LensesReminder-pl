@@ -16,6 +16,8 @@
 		661082D31B4EB66B004FD50C /* LensesReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661082D21B4EB66B004FD50C /* LensesReminderTests.swift */; };
 		661082DD1B4FA687004FD50C /* SetupRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661082DC1B4FA687004FD50C /* SetupRecipeView.swift */; };
 		661082E51B4FAE9D004FD50C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 661082E41B4FAE9D004FD50C /* Main.storyboard */; };
+		6628E7E41B6A58280024B10A /* FunctionsCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6628E7E31B6A58280024B10A /* FunctionsCoreData.swift */; };
+		66B062B61B6B5F92009ACCF9 /* dateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B062B51B6B5F92009ACCF9 /* dateFormatter.swift */; };
 		66DE0B2C1B6668B700F27FEC /* DataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE0B2B1B6668B600F27FEC /* DataPickerView.swift */; };
 		66DE0B2E1B68D14200F27FEC /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE0B2D1B68D14200F27FEC /* Date.swift */; };
 		66FE5FEF1B4FC615002F191F /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 66FE5FEE1B4FC615002F191F /* save.png */; };
@@ -47,6 +49,8 @@
 		661082D21B4EB66B004FD50C /* LensesReminderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensesReminderTests.swift; sourceTree = "<group>"; };
 		661082DC1B4FA687004FD50C /* SetupRecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupRecipeView.swift; sourceTree = "<group>"; };
 		661082E41B4FAE9D004FD50C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		6628E7E31B6A58280024B10A /* FunctionsCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionsCoreData.swift; sourceTree = "<group>"; };
+		66B062B51B6B5F92009ACCF9 /* dateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dateFormatter.swift; sourceTree = "<group>"; };
 		66DE0B2B1B6668B600F27FEC /* DataPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPickerView.swift; sourceTree = "<group>"; };
 		66DE0B2D1B68D14200F27FEC /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = ../Date.swift; sourceTree = "<group>"; };
 		66FE5FEE1B4FC615002F191F /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 			children = (
 				661082B91B4EB66B004FD50C /* AppDelegate.swift */,
 				661082BE1B4EB66B004FD50C /* ViewController.swift */,
+				66B062B51B6B5F92009ACCF9 /* dateFormatter.swift */,
+				6628E7E31B6A58280024B10A /* FunctionsCoreData.swift */,
 				661082DC1B4FA687004FD50C /* SetupRecipeView.swift */,
 				66FE5FF21B53E8B3002F191F /* ShowRecipeView.swift */,
 				6608A3861B56A1050037CD0F /* editRecipeView.swift */,
@@ -245,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66B062B61B6B5F92009ACCF9 /* dateFormatter.swift in Sources */,
 				661082DD1B4FA687004FD50C /* SetupRecipeView.swift in Sources */,
 				66FE5FF51B550D67002F191F /* Lenses.swift in Sources */,
 				66DE0B2C1B6668B700F27FEC /* DataPickerView.swift in Sources */,
@@ -253,6 +260,7 @@
 				661082BF1B4EB66B004FD50C /* ViewController.swift in Sources */,
 				661082BA1B4EB66B004FD50C /* AppDelegate.swift in Sources */,
 				66DE0B2E1B68D14200F27FEC /* Date.swift in Sources */,
+				6628E7E41B6A58280024B10A /* FunctionsCoreData.swift in Sources */,
 				661082BD1B4EB66B004FD50C /* LensesReminder.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

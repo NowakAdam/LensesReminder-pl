@@ -7,3 +7,28 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
+
+class DateForm{
+    
+    func dateFormString(StringDate:String)->NSDate{
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
+        let convertedDate = dateFormatter.dateFromString(StringDate)
+        
+        return convertedDate!
+    }
+    
+    func dateToString(dateNSdate:NSDate) -> String{
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
+            let strDate = dateFormatter.stringFromDate(dateNSdate)
+
+        return strDate
+    }
+    
+    
+    
+    
+}

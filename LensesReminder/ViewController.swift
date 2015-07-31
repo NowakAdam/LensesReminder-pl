@@ -15,8 +15,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var expireInfoLabel: UILabel!
     
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
-    var fetchedResultsController:NSFetchedResultsController = NSFetchedResultsController()
+    let dateForm = DateForm()
+    
+    let managedObjectContext: AnyObject = FunctionsCoreData().managedObjectContext()
+    let fetchedResultsController: NSFetchedResultsController = FunctionsCoreData().fetchedResultsController() as! NSFetchedResultsController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,55 +35,36 @@ class ViewController: UIViewController {
 
     
     @IBAction func clearCoreDataButtonTapped(sender: UIButton) {
-        delete()
+       // delete()
+        
+        var functions = FunctionsCoreData()
+        functions.deleteData("Lenses")
+        
+        
     }
 
 //helper
     
-    func delete(){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        let fetchRequest = NSFetchRequest(entityName: "Lenses")
-        var error: NSError?
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error)
-            as! [NSManagedObject]?
-        if let results = fetchedResults
-        {
-            for (var i=0; i < results.count; i++)
-            {
-                let value = results[i]
-                managedContext.deleteObject(value)
-                managedContext.save(nil)
-            }
-        }
-    }
+
     func showDate(){
-        let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        let appDel:AppDelegate = FunctionsCoreData().appDel() as! AppDelegate
         var request = NSFetchRequest(entityName: "Date")
         request.returnsObjectsAsFaults = false
-        var results:NSArray = context.executeFetchRequest(request, error: nil)!
+        var results: NSArray = FunctionsCoreData().executeSaveRequest("Date")
+        
         if (results.count > 0) {
             var res = results[0] as! NSManagedObject
             var keyDate = "date"
             var keyDateExpire = "changeLensesDate"
             var dateToLabel = res.valueForKey(keyDate) as? String
             var expireDateToLabel = res.valueForKey(keyDateExpire) as? String
-            
-            
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
-            let expireDateToAlert = dateFormatter.dateFromString(expireDateToLabel!)
-            
-            
-            
+
+            let expireDateToAlert = dateForm.dateFormString(expireDateToLabel!)
             self.infoLabel.text = "zakup dnia " + dateToLabel!
             self.expireInfoLabel.text = "soczewki ważne do: " + expireDateToLabel!
-            alert(expireDateToAlert!)
-            if expireDateToAlert != nil{
-               
+            alert(expireDateToAlert)
             
-            }
+      
         }
     }
     func alert(expireDate:AnyObject){

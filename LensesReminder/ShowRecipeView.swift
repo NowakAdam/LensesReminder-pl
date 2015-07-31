@@ -29,17 +29,22 @@ class ShowRecipeView: UIViewController,NSFetchedResultsControllerDelegate {
     @IBOutlet weak var bliz_left_os: UILabel!
     @IBOutlet weak var bliz_left_pryzma: UILabel!
     
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
-    var fetchedResultsController:NSFetchedResultsController = NSFetchedResultsController()
+
+    
+    let managedObjectContext: AnyObject = FunctionsCoreData().managedObjectContext()
+    
+//    FetchReqController()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        var context :NSManagedObjectContext = appDel.managedObjectContext!
+        FunctionsCoreData().appDel()
+        
         var request = NSFetchRequest(entityName: "Lenses")
         request.returnsObjectsAsFaults = false
-        var results:NSArray = context.executeFetchRequest(request, error: nil)!
+        var results:NSArray = managedObjectContext.executeFetchRequest(request, error: nil)!
         
         if (results.count > 0){
             var counter = (results.count - 1 )
