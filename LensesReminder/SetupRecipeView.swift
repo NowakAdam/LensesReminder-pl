@@ -38,6 +38,7 @@ class SetupRecipeView: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupRecipeScrollView.contentSize.height = 600
+          self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.jpg")!)
     }
 
     override func didReceiveMemoryWarning() {

@@ -33,9 +33,16 @@ class editRecipeView: UIViewController {
     var lensesarray = [NSManagedObject]()
     var preparedArray = [NSManagedObject]()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let recognizer = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
+        view.addGestureRecognizer(recognizer)
+        
+          self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.jpg")!)
         updateMainView()
+        
            }
     @IBAction func SaveEditButtonTapped(sender: UIButton) {
 
@@ -128,5 +135,24 @@ class editRecipeView: UIViewController {
             bliz_left_os.text = "B/D"
             bliz_left_pryzma.text = "B/D"
         }
+    }
+    func handleTap(recognizer: UITapGestureRecognizer) {
+        dal_right_sfera.resignFirstResponder()
+        dal_right_cylinder.resignFirstResponder()
+        dal_right_os.resignFirstResponder()
+        dal_right_pryzma.resignFirstResponder()
+        dal_left_sfera.resignFirstResponder()
+        dal_left_cylinder.resignFirstResponder()
+        dal_left_os.resignFirstResponder()
+        dal_left_pryzma.resignFirstResponder()
+        bliz_right_sfera.resignFirstResponder()
+        bliz_right_cylinder.resignFirstResponder()
+        bliz_right_os.resignFirstResponder()
+        bliz_right_pryzma.resignFirstResponder()
+        bliz_left_sfera.resignFirstResponder()
+        bliz_left_cylinder.resignFirstResponder()
+        bliz_left_os.resignFirstResponder()
+        bliz_left_pryzma.resignFirstResponder()
+    
     }
 }

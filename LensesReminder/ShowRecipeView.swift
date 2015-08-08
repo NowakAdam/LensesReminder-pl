@@ -33,7 +33,7 @@ class ShowRecipeView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+          self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.jpg")!)
         functions.appDel()
         
         let request: AnyObject = functions.fetchRequest("Lenses")

@@ -110,4 +110,23 @@ class FunctionsCoreData: UIViewController,NSFetchedResultsControllerDelegate {
             }
         }
     }
+//    func editDataByKey(entityName:String,key:String,newValue:NSDate){
+//      
+//        var thisObject: AnyObject = prepareEntity(entityName)
+//        var dataToDelete: NSManagedObject? = thisObject.valueForKey(key) as! NSManagedObject?
+//        var error: NSError?
+//        let managedContext = appDel().managedObjectContext!
+//        let fetchRequest = NSFetchRequest(entityName: entityName)
+//
+//        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error)
+//            as! [NSManagedObject]?
+//        if let results = fetchedResults {
+//            for (var i=0; i < results.count; i++)
+//            {
+//                let value = results[i]
+//                managedContext.deleteObject(dataToDelete!)
+//                managedContext.save(nil)
+//            }
+//        }
+//    }
 }

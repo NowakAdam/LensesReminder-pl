@@ -14,28 +14,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    
+    //test
 
+    //test
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
+ 
        //Actions
+        if application.respondsToSelector("registerUserNotificationSettings:") {
+            
         var firstAction:UIMutableUserNotificationAction = UIMutableUserNotificationAction()
-        firstAction.identifier = "First"
-        firstAction.title = "First!!"
+        firstAction.identifier = "Close"
+        firstAction.title = "Close"
         firstAction.activationMode = UIUserNotificationActivationMode.Background
         firstAction.destructive = true
         firstAction.authenticationRequired = false
         
         var secondAction:UIMutableUserNotificationAction = UIMutableUserNotificationAction()
-        secondAction.identifier = "Second"
-        secondAction.title = "Second!!"
+        secondAction.identifier = "Remind"
+        secondAction.title = "Ustaw nowe powiadomienie"
         secondAction.activationMode = UIUserNotificationActivationMode.Foreground
         secondAction.destructive = false
         secondAction.authenticationRequired = false
         
         var thirdAction:UIMutableUserNotificationAction = UIMutableUserNotificationAction()
-        thirdAction.identifier = "third"
-        thirdAction.title = "Third!!"
-        thirdAction.activationMode = UIUserNotificationActivationMode.Foreground
+        thirdAction.identifier = "Open"
+        thirdAction.title = "Przypomnij za godzinę"
+        thirdAction.activationMode = UIUserNotificationActivationMode.Background
         thirdAction.destructive = false
         thirdAction.authenticationRequired = false
 
@@ -43,37 +48,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var firstCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         firstCategory.identifier = "FirstCat"
         var defaultActions:NSArray = [firstAction,secondAction,thirdAction]
-        var minimalActions:NSArray = [firstAction,secondAction]
+        var minimalActions:NSArray = [secondAction,thirdAction]
         
-        firstCategory.setActions(defaultActions as [AnyObject], forContext: UIUserNotificationActionContext.Default)
+        firstCategory.setActions(minimalActions as [AnyObject], forContext: UIUserNotificationActionContext.Default)
         firstCategory.setActions(minimalActions as [AnyObject], forContext: UIUserNotificationActionContext.Minimal)
         //NSSet for catefories
         
         let categories:NSSet = NSSet(object: firstCategory)
         
+
         
         let types:UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
         let mySettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: categories as Set<NSObject>)
         UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)
-        
+            
+        }else {
+
+            application.registerForRemoteNotificationTypes(UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound)
+            
+        }
+            
         return true
     }
-    func application(application: UIApplication,
-        handleActionWithIdentifier identifier:String?,
-        forLocalNotification notification:UILocalNotification,
-        completionHandler: (() -> Void)){
+    
+    func application(application: UIApplication,handleActionWithIdentifier identifier:String?,forLocalNotification notification:UILocalNotification,completionHandler: (() -> Void)){
             
-            if (identifier == "First"){
+            if (identifier == "Remind"){
                 
-                NSNotificationCenter.defaultCenter().postNotificationName("action2Pressed", object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName("actionTwoPressed", object: nil)
                 
-            }else if (identifier == "Second"){
-                NSNotificationCenter.defaultCenter().postNotificationName("action3Pressed", object: nil)
+            }else if (identifier == "Open"){
+                NSNotificationCenter.defaultCenter().postNotificationName("actionThreePressed", object: nil)
                 
             }
-            
             completionHandler()
-            
     }
    
     func applicationWillResignActive(application: UIApplication) {
@@ -162,6 +170,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 

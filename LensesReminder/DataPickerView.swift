@@ -42,10 +42,11 @@ class DataPickerView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+  self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.jpg")!)
         stepper.autorepeat = true
         stepper.wraps = true
         stepper.maximumValue = 5
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,6 +75,7 @@ class DataPickerView: UIViewController {
         dateArray.append(thisDate)
             self.selectedDate.text = "zapisano"
             println(res)
+            
         }
     }
     
